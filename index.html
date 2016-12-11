@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <!-- getmdl.io -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+        <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+        <!-- angular -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+        <script src="https://code.jquery.com/jquery.min.js"></script>
+
+        <!-- bootstrap -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+        <!-- app -->
+        <script src="app.js"></script>
+    </head>
+
+    <body ng-app='app' ng-controller='mainCtrl'>
+
+        <!-- No header, and the drawer stays open on larger screens (fixed drawer). -->
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+            <div class="mdl-layout__drawer">
+
+                <span class="mdl-layout-title">TheMovieDB Lister</span>
+
+                <!-- chip -->
+                    <span class="mdl-chip" style='margin: 0 5%; text-align: center'>
+                        <span class="mdl-chip__text">Results: {{movies.total_results}}</span>
+                    </span>
+
+
+                <nav class="mdl-navigation">
+
+                    <!-- Year -->
+                    <a class="mdl-navigation__link form-group row" href="">
+                        <label for="search_year" class="col-xs-12 col-form-label">Year</label>
+                        <div class="col-xs-12">
+                            <select class="form-control" ng-model="search.options.year">
+                                <option value=''>-</option>
+                                <option ng-repeat="option in searchOption.year" value="{{option}}">{{option}}</option>
+                            </select>
+                        </div>
+                    </a>
+
+                    <!-- Sort by -->
+                    <a class="mdl-navigation__link form-group row" href="">
+                        <label for="search_sort_by" class="col-xs-12 col-form-label">Sort by</label>
+                        <div class="col-xs-12">
+                            <select class="form-control" ng-model="search.options.sort_by">
+                                <option value=''>-</option>
+                                <option ng-repeat="option in searchOption.sort_by" value="{{option}}">{{option}}</option>
+                            </select>
+                        </div>
+                    </a>
+
+                    <!-- Include video -->
+                    <a class="mdl-navigation__link form-group row" href="">
+                        <label for="search_include_adult" class="col-xs-12 col-form-label">Include video</label>
+                        <div class="col-xs-12">
+                            <select class="form-control" ng-model="search.options.include_video">
+                                <option value=''>-</option>
+                                <option ng-repeat="option in searchOption.include_video" value="{{option}}">{{option}}</option>
+                            </select>
+                        </div>
+                    </a>
+
+                    <!-- Include adult -->
+                    <a class="mdl-navigation__link form-group row" href="">
+                        <label for="search_include_adult" class="col-xs-12 col-form-label">Include adult</label>
+                        <div class="col-xs-12">
+                            <select class="form-control" ng-model="search.options.include_adult">
+                                <option value=''>-</option>
+                                <option ng-repeat="option in searchOption.include_adult" value="{{option}}">{{option}}</option>
+                            </select>
+                        </div>
+                    </a>
+
+                    <!--
+                    <select name="language"></select>
+                    <select name="certification_country"></select>
+                    <select name="certification"></select>
+                    <select name="certification.lte"></select>
+                    <select name="include_video"></select>
+                    <select name="page"></select>
+                    <select name="primary_release_year"></select>
+                    <select name="primary_release_date.gte"></select>
+                    <select name="primary_release_date.lte"></select>
+                    <select name="release_date.gte"></select>
+                    <select name="release_date.lte"></select>
+                    <select name="vote_count.gte"></select>
+                    <select name="vote_count.lte"></select>
+                    <select name="vote_average.gte"></select>
+                    <select name="vote_average.lte"></select>
+                    <select name="with_cast"></select>
+                    <select name="with_crew"></select>
+                    <select name="with_companies"></select>
+                    <select name="with_genres"></select>
+                    <select name="with_keywords"></select>
+                    <select name="with_people"></select>
+                    <select name="without_genres"></select>
+                    <select name="with_runtime.gte"></select>
+                    <select name="with_runtime.lte"></select>
+                    -->
+                </nav>
+            </div>
+
+            <main class="mdl-layout__content" style='padding-top: 50px'>
+
+                <!-- MDL Progress Bar with Indeterminate Progress -->
+                <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate"
+                     style='display: block; margin: auto; margin-top: 100px' ng-if='!movies.results'></div>
+
+                <!-- No result -->
+                <div class="mdl-layout-title" style='display: block; margin: auto; text-align: center'
+                     ng-if='movies.results.length == 0'>No results
+                </div>
+
+
+                <!-- Results -->
+                <div ng-if='movies.results.length > 0'>
+
+                    <!-- page nav -->
+                        <span style='display: block; margin: auto; text-align: center; margin: 2% 0'>
+                            <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab"
+                                    ng-click='search.page = search.page - 1'>
+                                <i class="material-icons">keyboard_arrow_left</i>
+                            </button>
+                            {{movies.page}}/{{movies.total_pages}}
+                            <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab"
+                                    ng-click='search.page = search.page + 1'>
+                                <i class="material-icons">keyboard_arrow_right</i>
+                            </button>
+                        </span>
+
+
+                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style='width: 90%; margin: 0 5%'>
+                        <thead>
+                        <tr>
+                            <th class="mdl-data-table__cell--non-numeric">Title</th>
+                            <th>Genre</th>
+                            <th>Vote</th>
+                            <th>Language</th>
+                            <th>Adult</th>
+                            <th>Release</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in movies.results">
+                            <td class="mdl-data-table__cell--non-numeric">{{item.original_title}}</td>
+                            <td>
+                                <p ng-repeat="genre in item.genre_ids">{{genre}}</p>
+                            </td>
+                            <td>{{item.vote_average}}</td>
+                            <td>{{item.original_language}}</td>
+                            <td>{{item.adult}}</td>
+                            <td>{{item.release_date}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </main>
+        </div>
+    </body>
+</html>
