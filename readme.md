@@ -5,7 +5,7 @@
 
 
 ## Description
-An app listing movies from (themoviedb API)[https://www.themoviedb.org/documentation/api].
+An app listing movies from [themoviedb API](https://www.themoviedb.org/documentation/api).
 
 
 ## Design
@@ -13,4 +13,4 @@ Use of [Material Design Lite](https://getmdl.io) as template.
 
 
 ## Demo
-Here is a (codepen demo)[http://codepen.io/tocausan/full/mOmKxj/]
+Here is a [codepen demo](http://codepen.io/tocausan/full/mOmKxj/).
