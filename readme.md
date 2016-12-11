@@ -4,4 +4,11 @@
 
 
 ## Description
-An app listing movies using themoviedb API.
+An app listing movies from themoviedb API.
+
+
+## Design
+Use of [Material Design Lite](https://getmdl.io) as template.
+
+
+
