@@ -1,7 +1,7 @@
 # themoviedb App
 
-[![Waffle.io](https://img.shields.io/badge/Build-0.1.0-green.svg)]() <br>
-[![Waffle.io](https://img.shields.io/badge/Status-Still_working_on-yellow.svg)]() <br>
+[![Waffle.io](https://img.shields.io/badge/Build-0.1.0-green.svg)]()
+[![Waffle.io](https://img.shields.io/badge/Status-Still_working_on-yellow.svg)]()
 
 
 ## Description
