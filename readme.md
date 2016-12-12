@@ -14,4 +14,5 @@ Use of [Material Design Lite](https://getmdl.io) as template.
 
 
 ## Demo
-Here is a [codepen demo](http://codepen.io/tocausan/full/mOmKxj/).
+Here is the [github page](https://tocausan.github.io/themoviedb-app/)
+Here is the [codepen demo](http://codepen.io/tocausan/full/mOmKxj/).
