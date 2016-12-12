@@ -4,9 +4,9 @@ angular.module('app', [])
 
         /* CONSTANTES */
         const APIKEY = 'e78675eae2c623337185d33bbd7a1c24';
-        const IMGURL = 'http://image.tmdb.org/t/p/original';
-        const GENRELISTURL = 'http://api.themoviedb.org/3/genre/movie/list?api_key=' + APIKEY;
-        const MOVIEDISCOVERURL = 'http://api.themoviedb.org/3/discover/movie?api_key=' + APIKEY;
+        const IMGURL = 'https://image.tmdb.org/t/p/original';
+        const GENRELISTURL = 'https://api.themoviedb.org/3/genre/movie/list?api_key=' + APIKEY;
+        const MOVIEDISCOVERURL = 'https://api.themoviedb.org/3/discover/movie?api_key=' + APIKEY;
 
         /* VARIABLES */
         // Search options
